@@ -33,7 +33,7 @@ const Gallery: React.FC = () => {
       src: 'https://live.staticflickr.com/122/31583462585_554fbe8bc6_b.jpg',
       alt: 'Modern table tennis facility',
       category: 'facilities',
-      title: 'SC Slodes Interior'
+      title: 'BgSpin 1 Interior'
     },
     {
       id: 3,

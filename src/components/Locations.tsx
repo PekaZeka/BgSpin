@@ -20,7 +20,7 @@ const Locations: React.FC = () => {
   const locations: Location[] = [
     {
       id: 'slodes',
-      name: 'SC "Slodes"',
+      name: 'BgSpin 1',
       address: 'Борска 92f, Rakovica, Belgrade',
       phone: '060-418-99-11',
       features: ['4 Professional Tables', 'LED Lighting', 'Air Conditioning', 'Changing Rooms', 'Equipment Rental'],
@@ -33,7 +33,7 @@ const Locations: React.FC = () => {
     },
     {
       id: 'dragoslava',
-      name: 'BgSpin Center',
+      name: 'BgSpin 2',
       address: 'Dragoslava Srejovića 2, Belgrade',
       phone: '061-305-6427',
       features: ['4 Professional Tables', 'Modern Lighting', 'Climate Control', 'Lounge Area', 'Pro Shop'],

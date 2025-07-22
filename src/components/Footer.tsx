@@ -89,7 +89,7 @@ const Footer: React.FC = () => {
               Contact Info
             </h3>
             <div className="space-y-6">
-              {/* SC Slodes */}
+              {/* BgSpin 1 */}
               <div className="bg-white/5 p-2 rounded-lg border border-white/10">
                 <div className="flex items-start space-x-3 mb-3">
                   <div className="p-1 bg-emerald-400/20 rounded">
