@@ -20,7 +20,7 @@ const Locations: React.FC = () => {
   const locations: Location[] = [
     {
       id: 'slodes',
-      name: 'BgSpin 1',
+      name: 'SC "Slodes"',
       address: 'Борска 92f, Rakovica, Belgrade',
       phone: '060-418-99-11',
       features: ['4 Professional Tables', 'LED Lighting', 'Air Conditioning', 'Changing Rooms', 'Equipment Rental'],
@@ -28,11 +28,12 @@ const Locations: React.FC = () => {
       hours: '9:00 - 22:00',
       parking: 'Free parking available',
       image: 'https://images.pexels.com/photos/32301963/pexels-photo-32301963.jpeg?_gl=1*1328acf*_ga*MTkyNTQ4OTA2MS4xNzUzMDI0OTMw*_ga_8JE65Q40S6*czE3NTMwMjQ5MjkkbzEkZzEkdDE3NTMwMjQ5NzIkajE3JGwwJGgw&w=800&h=600&fit=crop',
-      mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4843.748362396512!2d20.45860477739763!3d44.75622478039512!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a71a8a83b8ba3%3A0xdf4d83642513dab6!2sBorska%2092f%2C%20Beograd%2011090!5e1!3m2!1sen!2srs!4v1753026831661!5m2!1sen!2srs'
+      mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4843.748362396512!2d20.45860477739763!3d44.75622478039512!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a71a8a83b8ba3%3A0xdf4d83642513dab6!2sBorska%2092f%2C%20Beograd%2011090!5e0!3m2!1sen!2srs!4v1753026831661!5m2!1sen!2srs'
+      //                                                                                                                                                                                                                                                         ↑ Changed from !5e1 to !5e0
     },
     {
       id: 'dragoslava',
-      name: 'BgSpin 2',
+      name: 'BgSpin Center',
       address: 'Dragoslava Srejovića 2, Belgrade',
       phone: '061-305-6427',
       features: ['4 Professional Tables', 'Modern Lighting', 'Climate Control', 'Lounge Area', 'Pro Shop'],
@@ -40,7 +41,8 @@ const Locations: React.FC = () => {
       hours: '9:00 - 22:00',
       parking: 'Street parking available',
       image: 'https://images.pexels.com/photos/976873/pexels-photo-976873.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
-      mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4838.717182184423!2d20.484203077399258!3d44.81621457643788!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7a95afaf2883%3A0xcc1319e616aa2315!2sDragoslava%20Srejovi%C4%87a%202%2C%20Beograd%2011000!5e1!3m2!1sen!2srs!4v1753026753782!5m2!1sen!2srs'
+      mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4838.717182184423!2d20.484203077399258!3d44.81621457643788!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7a95afaf2883%3A0xcc1319e616aa2315!2aDragoslava%20Srejovi%C4%87a%202%2C%20Beograd%2011000!5e0!3m2!1sen!2srs!4v1753026753782!5m2!1sen!2srs'
+      //                                                                                                                                                                                                                                                            ↑ Changed from !5e1 to !5e0
     },
   ];
 
