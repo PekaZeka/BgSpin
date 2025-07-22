@@ -27,6 +27,7 @@ const Navigation: React.FC = () => {
     { label: 'About', id: 'about' },
     { label: 'Locations', id: 'locations' },
     { label: 'Services', id: 'services' },
+    { label: 'Book Table', id: 'booking' },
     { label: 'Teams', id: 'teams' },
     { label: 'Pricing', id: 'pricing' },
     { label: 'Gallery', id: 'gallery' },
