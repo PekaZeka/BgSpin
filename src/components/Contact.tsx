@@ -46,13 +46,13 @@ const Contact: React.FC = () => {
   const contactInfo = [
     {
       icon: MapPin,
-      title: 'SC "Slodes"',
+      title: 'BgSpin 1',
       details: ['Борска 92f, Rakovica', 'Belgrade, Serbia'],
       phone: '060-418-99-11'
     },
     {
       icon: MapPin,
-      title: 'BgSpin Center',
+      title: 'BgSpin 2',
       details: ['Dragoslava Srejovića 2', 'Belgrade, Serbia'],
       phone: '061-305-6427'
     }

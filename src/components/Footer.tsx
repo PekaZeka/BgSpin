@@ -96,7 +96,7 @@ const Footer: React.FC = () => {
                     <MapPin className="h-4 w-4 text-emerald-400" />
                   </div>
                   <div>
-                    <p className="font-medium text-white">SC "Slodes"</p>
+                    <p className="font-medium text-white">BgSpin 1</p>
                     <p className="text-gray-300 text-xs">Борска 92f, Rakovica</p>
                   </div>
                 </div>
@@ -106,14 +106,14 @@ const Footer: React.FC = () => {
                 </div>
               </div>
 
-              {/* BgSpin Center */}
+              {/* BgSpin 2 */}
               <div className="bg-white/5 p-2 rounded-lg border border-white/10">
                 <div className="flex items-start space-x-3 mb-3">
                   <div className="p-1 bg-emerald-400/20 rounded">
                     <MapPin className="h-4 w-4 text-emerald-400" />
                   </div>
                   <div>
-                    <p className="font-medium text-white">BgSpin Center</p>
+                    <p className="font-medium text-white">BgSpin 2</p>
                     <p className="text-gray-300 text-xs">Dragoslava Srejovića 2</p>
                   </div>
                 </div>

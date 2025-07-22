@@ -69,47 +69,47 @@ const About: React.FC = () => {
         </div>
 
         {/* Coaches Section */}
-        <div className="bg-gray-50 rounded-2xl p-8 lg:p-12">
-          <h3 className="text-3xl font-bold text-forest-green-900 mb-8 text-center">Our Coaches</h3>
+        <div className="bg-gray-50 rounded-2xl p-4 sm:p-8 lg:p-12">
+          <h3 className="text-2xl sm:text-3xl font-bold text-forest-green-900 mb-6 sm:mb-8 text-center">Our Coaches</h3>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             {/* Coach 1 */}
-            <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <div className="flex items-start space-x-6">
-                <div className="w-20 h-20 bg-emerald-600 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Users className="h-10 w-10 text-white" />
+            <div className="bg-white rounded-xl p-4 sm:p-6 lg:p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <div className="flex items-start space-x-3 sm:space-x-4 lg:space-x-6">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-emerald-600 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Users className="h-6 w-6 sm:h-8 sm:w-8 lg:h-10 lg:w-10 text-white" />
                 </div>
-                <div>
-                  <h4 className="text-xl font-bold text-forest-green-900 mb-2">Nada Cvetković</h4>
-                  <p className="text-emerald-600 font-semibold mb-3">Head Coach</p>
-                  <p className="text-gray-700 leading-relaxed">
+                <div className="flex-1 min-w-0">
+                  <h4 className="text-lg sm:text-xl font-bold text-forest-green-900 mb-1 sm:mb-2">Nada Cvetković</h4>
+                  <p className="text-emerald-600 font-semibold mb-2 sm:mb-3 text-sm sm:text-base">Head Coach</p>
+                  <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
                     With over two decades of coaching experience, Nada specializes in developing 
                     competitive players and has guided numerous athletes to national and international success.
                   </p>
-                  <div className="flex items-center mt-4">
-                    <Star className="h-4 w-4 text-gold-500 mr-1" />
-                    <span className="text-sm text-gray-600">Professional Certification • Competition Specialist</span>
+                  <div className="flex items-center mt-3 sm:mt-4">
+                    <Star className="h-3 w-3 sm:h-4 sm:w-4 text-gold-500 mr-1 flex-shrink-0" />
+                    <span className="text-xs sm:text-sm text-gray-600">Professional Certification • Competition Specialist</span>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Coach 2 */}
-            <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <div className="flex items-start space-x-6">
-                <div className="w-20 h-20 bg-forest-green-600 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Target className="h-10 w-10 text-white" />
+            <div className="bg-white rounded-xl p-4 sm:p-6 lg:p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <div className="flex items-start space-x-3 sm:space-x-4 lg:space-x-6">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-forest-green-600 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Target className="h-6 w-6 sm:h-8 sm:w-8 lg:h-10 lg:w-10 text-white" />
                 </div>
-                <div>
-                  <h4 className="text-xl font-bold text-forest-green-900 mb-2">Robert Fišer</h4>
-                  <p className="text-emerald-600 font-semibold mb-3">Technical Director</p>
-                  <p className="text-gray-700 leading-relaxed">
+                <div className="flex-1 min-w-0">
+                  <h4 className="text-lg sm:text-xl font-bold text-forest-green-900 mb-1 sm:mb-2">Robert Fišer</h4>
+                  <p className="text-emerald-600 font-semibold mb-2 sm:mb-3 text-sm sm:text-base">Technical Director</p>
+                  <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
                     Robert brings extensive technical expertise and modern training methodologies, 
                     focusing on skill development for players of all levels from beginners to advanced.
                   </p>
-                  <div className="flex items-center mt-4">
-                    <Star className="h-4 w-4 text-gold-500 mr-1" />
-                    <span className="text-sm text-gray-600">Technical Expert • Youth Development</span>
+                  <div className="flex items-center mt-3 sm:mt-4">
+                    <Star className="h-3 w-3 sm:h-4 sm:w-4 text-gold-500 mr-1 flex-shrink-0" />
+                    <span className="text-xs sm:text-sm text-gray-600">Technical Expert • Youth Development</span>
                   </div>
                 </div>
               </div>

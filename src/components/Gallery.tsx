@@ -1,10 +1,16 @@
-import React, { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import ImageSlider from './ImageSlider';
 
 const Gallery: React.FC = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState('all');
+  
+  // Touch/Swipe state using refs for better performance
+  const touchStart = useRef<number | null>(null);
+  const touchEnd = useRef<number | null>(null);
+  const minSwipeDistance = 50;
 
   const categories = [
     { id: 'all', name: 'All Photos' },
@@ -62,7 +68,7 @@ const Gallery: React.FC = () => {
       src: 'https://images.unsplash.com/photo-1511067007398-7e4b90cfa4bc?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8dGFibGUlMjB0ZW5uaXN8ZW58MHx8MHx8fDA%3D',
       alt: 'Table tennis facility overview',
       category: 'facilities',
-      title: 'BgSpin Center Overview'
+      title: 'BgSpin 2 Overview'
     },
     {
       id: 8,
@@ -77,12 +83,137 @@ const Gallery: React.FC = () => {
       alt: 'Team celebration',
       category: 'teams',
       title: 'Victory Celebration'
+    },
+    {
+      id: 10,
+      src: 'https://stupaprodsguscentral.blob.core.windows.net/ettu-website-wordpress/2024/10/9150afb3-5758-46b3-ad18-bdfdc8abbb72.JPG',
+      alt: 'Team celebration',
+      category: 'teams',
+      title: 'Victory Celebration'
+    },
+    {
+      id: 11,
+      src: 'https://stupaprodsguscentral.blob.core.windows.net/ettu-website-wordpress/2024/10/9150afb3-5758-46b3-ad18-bdfdc8abbb72.JPG',
+      alt: 'Team celebration',
+      category: 'teams',
+      title: 'Victory Celebration'
+    },
+    {
+      id: 12,
+      src: 'https://stupaprodsguscentral.blob.core.windows.net/ettu-website-wordpress/2024/10/9150afb3-5758-46b3-ad18-bdfdc8abbb72.JPG',
+      alt: 'Team celebration',
+      category: 'action',
+      title: 'Victory Celebration'
+    },
+    {
+      id: 13,
+      src: 'https://stupaprodsguscentral.blob.core.windows.net/ettu-website-wordpress/2024/10/9150afb3-5758-46b3-ad18-bdfdc8abbb72.JPG',
+      alt: 'Team celebration',
+      category: 'action',
+      title: 'Victory Celebration'
+    },
+    {
+      id: 14,
+      src: 'https://stupaprodsguscentral.blob.core.windows.net/ettu-website-wordpress/2024/10/9150afb3-5758-46b3-ad18-bdfdc8abbb72.JPG',
+      alt: 'Team celebration',
+      category: 'facilities',
+      title: 'Victory Celebration'
+    },
+    {
+      id: 15,
+      src: 'https://stupaprodsguscentral.blob.core.windows.net/ettu-website-wordpress/2024/10/9150afb3-5758-46b3-ad18-bdfdc8abbb72.JPG',
+      alt: 'Team celebration',
+      category: 'facilities',
+      title: 'Victory Celebration'
+    },
+    {
+      id: 16,
+      src: 'https://stupaprodsguscentral.blob.core.windows.net/ettu-website-wordpress/2024/10/9150afb3-5758-46b3-ad18-bdfdc8abbb72.JPG',
+      alt: 'Team celebration',
+      category: 'facilities',
+      title: 'Victory Celebration'
+    },
+    {
+      id: 17,
+      src: 'https://stupaprodsguscentral.blob.core.windows.net/ettu-website-wordpress/2024/10/9150afb3-5758-46b3-ad18-bdfdc8abbb72.JPG',
+      alt: 'Team celebration',
+      category: 'events',
+      title: 'Victory Celebration'
+    },
+    {
+      id: 18,
+      src: 'https://stupaprodsguscentral.blob.core.windows.net/ettu-website-wordpress/2024/10/9150afb3-5758-46b3-ad18-bdfdc8abbb72.JPG',
+      alt: 'Team celebration',
+      category: 'events',
+      title: 'Victory Celebration'
+    },
+    {
+      id: 19,
+      src: 'https://stupaprodsguscentral.blob.core.windows.net/ettu-website-wordpress/2024/10/9150afb3-5758-46b3-ad18-bdfdc8abbb72.JPG',
+      alt: 'Team celebration',
+      category: 'events',
+      title: 'Victory Celebration'
     }
   ];
 
   const filteredImages = selectedCategory === 'all' 
     ? galleryImages 
     : galleryImages.filter(img => img.category === selectedCategory);
+
+  // Touch event handlers for lightbox swipe navigation
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchEnd.current = null;
+    touchStart.current = e.targetTouches[0].clientX;
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    touchEnd.current = e.targetTouches[0].clientX;
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart.current || !touchEnd.current) return;
+    
+    const distance = touchStart.current - touchEnd.current;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    
+    if (isLeftSwipe) {
+      nextImage();
+    } else if (isRightSwipe) {
+      prevImage();
+    }
+  };
+
+  // ESC key and Arrow keys handler
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (!lightboxOpen) return;
+      
+      switch (event.key) {
+        case 'Escape':
+          closeLightbox();
+          break;
+        case 'ArrowLeft':
+          event.preventDefault();
+          prevImage();
+          break;
+        case 'ArrowRight':
+          event.preventDefault();
+          nextImage();
+          break;
+      }
+    };
+
+    if (lightboxOpen) {
+      document.addEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'unset';
+    };
+  }, [lightboxOpen]);
 
   const openLightbox = (index: number) => {
     setCurrentImage(index);
@@ -99,6 +230,12 @@ const Gallery: React.FC = () => {
 
   const prevImage = () => {
     setCurrentImage((prev) => (prev - 1 + filteredImages.length) % filteredImages.length);
+  };
+
+  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget) {
+      closeLightbox();
+    }
   };
 
   return (
@@ -132,76 +269,80 @@ const Gallery: React.FC = () => {
           ))}
         </div>
 
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredImages.map((image, index) => (
-            <div
-              key={image.id}
-              className="group relative bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden cursor-pointer transform hover:scale-105"
-              onClick={() => openLightbox(index)}
-            >
-              <div className="aspect-w-4 aspect-h-3">
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="w-full h-[30rem] object-cover transition-transform duration-300 group-hover:scale-110"
-                  loading="lazy"
-                />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute bottom-4 left-4 right-4">
-                  <h3 className="text-white font-semibold text-lg mb-1">{image.title}</h3>
-                  <p className="text-gray-200 text-sm capitalize">{image.category.replace('-', ' ')}</p>
-                </div>
-              </div>
-            </div>
-          ))}
+        {/* Main Image Slider */}
+        <div className="mx-4 md:mx-16">
+          <ImageSlider
+            images={filteredImages}
+            onImageClick={openLightbox}
+            autoPlay={true}
+            autoPlayInterval={5000}
+            showDots={true}
+          />
         </div>
 
-        {/* Lightbox */}
+        {/* Lightbox with touch/swipe support */}
         {lightboxOpen && (
-          <div className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4">
-            <div className="relative max-w-4xl max-h-full">
+          <div 
+            className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4 cursor-pointer"
+            onClick={handleBackdropClick}
+          >
+            <div 
+              className="relative cursor-auto bg-black/20 rounded-lg backdrop-blur-sm"
+              style={{ 
+                width: 'min(90vw, 1000px)', 
+                height: 'min(80vh, 700px)' 
+              }}
+              onClick={(e) => e.stopPropagation()}
+              onTouchStart={onTouchStart}
+              onTouchMove={onTouchMove}
+              onTouchEnd={onTouchEnd}
+            >
               {/* Close Button */}
               <button
                 onClick={closeLightbox}
-                className="absolute top-4 right-4 text-white hover:text-gray-300 z-10 bg-black/50 rounded-full p-2 transition-colors duration-200"
+                className="absolute top-4 right-4 text-white hover:text-gray-300 z-20 bg-black/70 hover:bg-black/90 rounded-full p-3 transition-colors duration-200 shadow-lg"
+                title="Close (ESC)"
               >
                 <X className="h-6 w-6" />
               </button>
 
-              {/* Navigation Buttons */}
+              {/* Navigation Buttons - Hidden on mobile screens */}
               <button
                 onClick={prevImage}
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 bg-black/50 rounded-full p-2 transition-colors duration-200"
+                className="absolute -left-16 top-1/2 transform -translate-y-1/2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full p-3 transition-all duration-200 z-10 shadow-lg hidden md:block"
+                title="Previous image (← or swipe right)"
               >
                 <ChevronLeft className="h-8 w-8" />
               </button>
               <button
                 onClick={nextImage}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 bg-black/50 rounded-full p-2 transition-colors duration-200"
+                className="absolute -right-16 top-1/2 transform -translate-y-1/2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full p-3 transition-all duration-200 z-10 shadow-lg hidden md:block"
+                title="Next image (→ or swipe left)"
               >
                 <ChevronRight className="h-8 w-8" />
               </button>
 
-              {/* Image */}
-              <img
-                src={filteredImages[currentImage]?.src}
-                alt={filteredImages[currentImage]?.alt}
-                className="max-w-full max-h-full object-contain"
-              />
+              {/* Fixed size image container */}
+              <div className="w-full h-full flex items-center justify-center p-4">
+                <img
+                  src={filteredImages[currentImage]?.src}
+                  alt={filteredImages[currentImage]?.alt}
+                  className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+                  onClick={(e) => e.stopPropagation()}
+                  style={{ userSelect: 'none' }}
+                />
+              </div>
 
-              {/* Image Info */}
-              <div className="absolute bottom-4 left-4 right-4 text-center">
-                <h3 className="text-white font-semibold text-xl mb-1">
-                  {filteredImages[currentImage]?.title}
-                </h3>
-                <p className="text-gray-300 capitalize">
-                  {filteredImages[currentImage]?.category.replace('-', ' ')}
-                </p>
-                <p className="text-gray-400 text-sm mt-2">
-                  {currentImage + 1} of {filteredImages.length}
-                </p>
+              {/* Image Info - Fixed position */}
+              <div className="absolute bottom-0 left-0 right-0 bg-black/80 p-4 rounded-b-lg">
+                <div className="text-center">
+                  <h3 className="text-white font-semibold text-xl mb-1">
+                    {filteredImages[currentImage]?.title}
+                  </h3>
+                  <p className="text-gray-400 text-sm mt-2">
+                    {currentImage + 1} of {filteredImages.length}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
